@@ -1,6 +1,6 @@
 ﻿namespace EventSourcing.Domain.Specifications
 {
-    public class OrSpecification<T> : ISpecification<T>
+    public class OrSpecification<T> : CompositeSpecification<T>
     {
         private readonly ISpecification<T> _leftSpecification;
         private readonly ISpecification<T> _rightSpecification;
@@ -11,7 +11,7 @@
             _rightSpecification = rightSpecification;
         }
 
-        public bool IsSatisfiedBy(T o)
+        public override bool IsSatisfiedBy(T o)
         {
             return _leftSpecification.IsSatisfiedBy(o) || _rightSpecification.IsSatisfiedBy(o);
         }

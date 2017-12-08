@@ -1,10 +1,8 @@
-﻿using EventSourcing.Domain.Models;
-
-namespace EventSourcing.Domain.Specifications
+﻿namespace EventSourcing.Domain.Specifications
 {
-    public class VerfiyTransferAccountSpecification : ISpecification<decimal>
+    public class VerfiyTransferAccountSpecification : CompositeSpecification<decimal>
     {
-        public bool IsSatisfiedBy(decimal valueToTransfer)
+        public override bool IsSatisfiedBy(decimal valueToTransfer)
         {
             return valueToTransfer > 0;
         }

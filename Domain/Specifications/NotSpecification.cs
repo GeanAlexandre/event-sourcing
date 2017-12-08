@@ -1,6 +1,6 @@
 ﻿namespace EventSourcing.Domain.Specifications
 {
-    public class NotSpecification<T> : ISpecification<T>
+    public class NotSpecification<T> : CompositeSpecification<T>
     {
         private readonly ISpecification<T> _notSpeficiation;
 
@@ -9,7 +9,7 @@
             _notSpeficiation = notSpecification;
         }
 
-        public bool IsSatisfiedBy(T o)
+        public override bool IsSatisfiedBy(T o)
         {
             return !_notSpeficiation.IsSatisfiedBy(o);
         }
